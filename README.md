@@ -6,7 +6,7 @@ This is small proof-of-concept for spawning & syncing traffic in GTAO-like way u
 
 This repository will be updated only to keep it working. Maybe.
 
-If you have any questions - please use github Discussions page or reach me in alt:V Discord, `@b2soft`. I don't care bugs and/or issues, so just don't.
+If you have any questions - please use github Discussions page or reach me in alt:V Discord, `@b2soft`. I don't care bugs and/or, so just don't. Your PR will be never accepted. Maybe.
 
 # Data I discovered so far
 There is a lot of needed data you can find in Data folder.
