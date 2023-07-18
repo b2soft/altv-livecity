@@ -1,0 +1,8 @@
+.vs/
+Client/build/
+Client/obj/
+dist/
+Server/build/
+Server/obj/
+Shared/obj/
+Shared/build/
