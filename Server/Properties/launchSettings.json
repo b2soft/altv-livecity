@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "LiveCity": {
+      "commandName": "Executable",
+      "executablePath": "$(ALTV_SERVER_ROOT)\\altv-server.exe",
+      "workingDirectory": "$(ALTV_SERVER_ROOT)"
+    }
+  }
+}

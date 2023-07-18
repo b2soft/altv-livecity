@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Configurations>Debug;Release;DebugLocal</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>$(ProjectDir)build/$(Configuration)</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugLocal|AnyCPU'">
+    <OutputPath>$(ProjectDir)build/$(Configuration)</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>$(ProjectDir)build/$(Configuration)</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AltV.Net" Version="15.0.124-dev" />
+    <PackageReference Include="AltV.Net.Async" Version="15.0.124-dev" />
+    <PackageReference Include="AltV.Net.Interactions" Version="15.0.124-dev" />
+    <PackageReference Include="MessagePack" Version="2.5.124" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\LiveCity.Shared.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <SignAssembly>False</SignAssembly>
+    <SelfContained>false</SelfContained>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" Condition="'$(Configuration)|$(Platform)'=='DebugLocal|AnyCPU' And '$(BuildingInsideVisualStudio)' == true" AfterTargets="PostBuildEvent">
+    <Exec Command="python &quot;..\Scripts\ide-deploy-server.py&quot;" />
+  </Target>
+
+</Project>

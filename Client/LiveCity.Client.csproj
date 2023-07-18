@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <Configurations>Debug;Release;DebugLocal</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>$(ProjectDir)build/$(Configuration)</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugLocal|AnyCPU'">
+    <OutputPath>$(ProjectDir)build/$(Configuration)</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>$(ProjectDir)build/$(Configuration)</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+    <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+    <SelfContained>false</SelfContained>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" Condition="'$(Configuration)|$(Platform)'=='DebugLocal|AnyCPU' And '$(BuildingInsideVisualStudio)' == true" AfterTargets="PostBuildEvent">
+    <Exec Command="python &quot;..\Scripts\ide-deploy-client.py&quot;" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="AltV.Net.Client" Version="15.0.124-dev" />
+    <PackageReference Include="AltV.Net.Client.Async" Version="15.0.124-dev" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\LiveCity.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

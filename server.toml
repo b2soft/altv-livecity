@@ -1,0 +1,18 @@
+name = 'LiveCity Test Server'
+host = '0.0.0.0'
+port = 7788
+players = 128
+# password = 'ultra-password'
+announce = false
+# token = 'YOUR_TOKEN'
+gamemode = 'LiveCity'
+website = 'example.com'
+language = 'en'
+description = 'LiveCity Test Server Description'
+modules = ['csharp-module']
+resources = [ 'livecity-server',  'livecity-client' ]
+debug = true
+streamingDistance = 10
+
+[csharp-module]
+disableDependencyDownload = true
